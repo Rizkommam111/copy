@@ -1,6 +1,12 @@
 <?php
+$keyword = $_POST['keyword'];
 include('connection.php');
-$query = "SELECT * FROM tb_produk";
+$query = "SELECT * FROM tb_produk where id like '%" . $keyword . "%' OR
+nama_produk like '%" . $keyword . "%' ORDER BY id ASC";
+if($keyword == null)
+{
+    $query = "SELECT * FROM tb_produk";
+}
 $result = $koneksi->query($query);
 
 ?>
@@ -42,7 +48,13 @@ $result = $koneksi->query($query);
     <body>
 
         <h2>HTML Table</h2>
-
+        <a href="tambah_form.html">
+            <h2>Tambah Form</h2>
+        </a>
+        <form action="./index.php" method="POST">
+            <input type="text" name="keyword" style="width: 400px;">
+            <button type="submit">Cari</button>
+        </form>
         <table>
             <tr>
                 <th>Id</th>
@@ -53,10 +65,18 @@ $result = $koneksi->query($query);
             <tbody>
                 <?php while ($row1 = mysqli_fetch_array($result)) :; ?>
                     <tr>
-                        <td><?php echo $row1['id']; ?></td>
-                        <td><?php echo $row1['nama_produk']; ?></td>
-                        <td><?php echo $row1['harga']; ?></td>
-                        <td><?php echo $row1['stok']; ?></td>
+                        <td>
+                            <?php echo $row1['id']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row1['nama_produk']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row1['harga']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row1['stok']; ?>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
