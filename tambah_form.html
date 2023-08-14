@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Form</title>
+    <style>
+      form {
+        display: grid;
+        grid-template-columns: auto;
+        place-items: center;
+        justify-content: center;
+        width: 400px;
+      }
+      input {
+        margin: 10px;
+        height: 20px;
+      }
+      .btn-submit {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="tambah_proses.php" method="post">
+      <input type="number" name="id" placeholder="Input Text Id" size="40px" />
+      <input
+        type="text"
+        name="nama_produk"
+        placeholder="Input Text Nama_Produk"
+        size="40px"
+      />
+      <input
+        type="text"
+        name="harga"
+        placeholder="Input Text Harga"
+        size="40px"
+      />
+      <input
+        type="number"
+        name="stok"
+        placeholder="Input Text Stok"
+        size="40px"
+      />
+      <input type="submit" class="btn-submit" />
+    </form>
+  </body>
+</html>
